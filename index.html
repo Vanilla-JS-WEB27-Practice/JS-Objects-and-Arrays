@@ -35,6 +35,7 @@
 
 
 
+
         // 2. Let's say we have an array
         const players = ["Sean", "John", "Juan", "Joan"];
 
@@ -74,7 +75,11 @@
 
         // Now when we update it, the original one isn't changed
 
-        // The same thing goes for objects, let's say we have a person object
+
+
+
+
+        // 3. The same thing goes for objects, let's say we have a person object
 
         // with Objects
         const person = {
@@ -83,12 +88,43 @@
         };
 
         // And we make a copy:
+        // const captain = person;
+        // captain.number = 99;
+
 
         // How do we take a copy instead?
+        const capt2 = Object.assign({}, person, { number: 99, age: 12});
+        console.log(capt2);
+        console.log(person);
 
         // We will hopefully soon see the object ...spread
+        const capt3 = {...person};
 
         // Things to note, this is only 1 level deep - both for Arrays and Objects. Lodash has a cloneDeep method, but you should think twice before using it. 
+
+        const sean = {
+            name: 'Sean',
+            age: 100,
+            social: {
+                twitter: '@twitter',
+                facebook: 'facebook.developer'
+            }
+        };
+
+        console.clear();
+        console.log(sean);
+
+        const dev = Object.assign({}, sean);
+        // changes only the name of the object you specify
+        dev.name = "Johnny";
+
+        // dev now displays "Johnny" as the name and sean displays "Sean" as the name
+
+        // dev.social.facebook = "johnny.facebook";
+        // changes both objects social.facebook to "johnny.facebook"
+
+        // work around
+        const dev2 = JSON.parse(JSON.stringify(sean));
 
     </script>
 
